@@ -8,13 +8,14 @@
       {{ partial "header.html" . }}
       {{ .Content }}
       {{ if gt (len ( where .Site.RegularPages "Section" "posts" )) 0 }}
+      <br>
       <h1>Latest Post</h1>
       <section>
         {{ range (first 10 (where .Site.RegularPages "Section" "posts" ).ByDate.Reverse) }}
           <p>
             <time class="g time" datetime="{{ dateFormat "2006-01-02" .Date }}">{{ dateFormat "2006-01-02" .Date }}</time>&nbsp;
             <a href="{{ .Permalink }}">{{ .Title }}</a>
-	    <br>{{.Summary}}
+	        <br>{{.Summary}}
           <p>
         {{ end }}
       </section>
